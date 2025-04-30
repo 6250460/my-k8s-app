@@ -16,7 +16,7 @@ jobs:
       - run:
           name: Push Docker Image
           command: |
-            docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
+            echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
             docker push dancegep/my-k8s-app:latest
   deploy:
     docker:
@@ -33,3 +33,11 @@ jobs:
           name: Deploy to Kubernetes
           command: |
             kubectl set image deployment/my-k8s-deployment my-container=dancegep/my-k8s-app:latest
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
