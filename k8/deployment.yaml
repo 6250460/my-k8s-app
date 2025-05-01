@@ -4,11 +4,11 @@ metadata:
   name: my-k8s-app
   namespace: dev
   annotations:
-      circleci.com/project-id: 20fa7c01-d168-429f-9b6b-1070e462e393
+    circleci.com/project-id: 20fa7c01-d168-429f-9b6b-1070e462e393
   labels:
-      circleci.com/component-name: my-k8s-app
-      circleci.com/version: 1.0.0
-      app: my-k8s-app
+    circleci.com/component-name: my-k8s-app
+    circleci.com/version: "1.0.0"
+    app: my-k8s-app
 spec:
   replicas: 2
   selector:
@@ -19,10 +19,12 @@ spec:
       labels:
         app: my-k8s-app
         circleci.com/component-name: my-k8s-app
-        circleci.com/version: 1.0.0
+        circleci.com/version: "1.0.0"
     spec:
+      
       containers:
-      - name: my-container
-        image: celyan/my-k8s-app:dev
-        ports:
-        - containerPort: 3000
+        - name: my-container
+          image: celyan/my-k8s-app:dev
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
