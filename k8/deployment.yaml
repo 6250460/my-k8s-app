@@ -4,7 +4,7 @@ metadata:
   name: my-k8s-app
   namespace: qa
   annotations:
-      circleci.com/project-id: b9e169a7-5305-4ecc-b3d4-69d37e38895d
+      circleci.com/project-id: 20fa7c01-d168-429f-9b6b-1070e462e393
   labels:
       circleci.com/component-name: my-k8s-app
       circleci.com/version: 1.0.0
