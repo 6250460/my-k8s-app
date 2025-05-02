@@ -4,7 +4,7 @@ const http = require('http');
 const server = http.createServer((req, res) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');
-    res.end('Image docker qa sur environement QA\n');
+    res.end('image docker qa sur environement QA\n');
 });
 
 
